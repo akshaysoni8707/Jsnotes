@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+
+    <button>hide</button>
+    <p>This is a paragraph with little content.</p>
+    <p>This is another small paragraph.</p>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+    // jQuery.ready(function() {
+
+    // });
+    $(document).ready(function() {
+        //print();
+        // $('h1').css({
+        //     'color': '#ff0000',
+        // }).hide();
+        $('button').on('click', function() {
+            $('h1').slideToggle();
+            $(this).css({
+                'background': '#234355',
+                'color': 'white'
+            });
+        });
+    });
+</script>
+<script>
+    // $(document).ready(function() {
+    //     var hidden = true;
+    //     $("button").click(function() {
+    //         if (hidden) {
+    //             $("p").hide(1000, function() {
+    //                 $("button").text('show');
+    //                 hidden = false;
+    //             });
+    //         } else {
+    //             $("p").show(1000, function() {
+    //                 hidden = true;
+    //                 $("button").text('hide');
+    //             });
+    //         }
+    //     });
+    // });
+</script>
+
+</html>

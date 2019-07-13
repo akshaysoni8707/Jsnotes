@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .warning {
+        outline: none;
+        border: none;
+        border: 2px solid orange;
+    }
+    
+    .error {
+        outline: none;
+        border: none;
+        border: 2px solid red;
+    }
+    
+    .success {
+        outline: none;
+        border: none;
+        border: 2px solid green;
+    }
+</style>
+
+<body>
+    <form name="calc">
+        <div>
+            <label>Number</label>
+            <input type="text" name="num" data-error="Data Must be numbers" data-success="Valid Number" />
+            <span></span>
+        </div>
+        <div>
+            <input type="button" name="add" value="+" />
+        </div>
+    </form>
+</body>
+<script>
+    var form = document.calc;
+    const errorNode = document.querySelector('input[type="text"] + span');
+    console.log(errorNode);
+    for (let index = 0; index < form.length - 1; index++) {
+        const element = form[index];
+        element.addEventListener('focus', function() {
+            element.classList.add("warning");
+
+        });
+        element.addEventListener('blur', function() {
+            if (element.value > 0 || element.value <= 0 && (element.value != null && element.value != undefined && element.value != "")) {
+                element.classList.remove("error");
+                element.classList.remove("warning");
+                element.classList.add("success");
+                errorNode.innerText = element.getAttribute("data-success");
+                console.log("I am number");
+            } else {
+                console.log("I am not a number");
+                element.classList.add("error");
+                element.classList.remove("warning");
+                element.classList.remove("success");
+                errorNode.innerText = element.getAttribute("data-error");
+            }
+        });
+        element.addEventListener('keyup', function() {
+            if (element.value > 0 || element.value <= 0 && (element.value != null && element.value != undefined && element.value != "")) {
+                element.classList.remove("error");
+                element.classList.remove("warning");
+                element.classList.add("success");
+                errorNode.innerText = element.getAttribute("data-success");
+            } else {
+                element.classList.add("error");
+                element.classList.remove("warning");
+                element.classList.remove("success");
+                errorNode.innerText = element.getAttribute("data-error");
+            }
+        });
+    }
+</script>
+
+</html>
